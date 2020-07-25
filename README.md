@@ -14,7 +14,7 @@ Evaluating prelimaries for socket programming.
 
 + Connect to remote repository
 
-    `git remote add origin git@github.com:saura8h/Computer-Communications.git`
+    `git remote add origin git@github.com:saura8h/Socket-Programming.git`
 
 + Install project
 
