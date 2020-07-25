@@ -55,13 +55,13 @@ while True:
         serverDataSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         if input_string == b'quit':
-            print("Receive 'quit' control message from client - SUCCESS!\n")
+            print("'quit' control message received from client; exiting the program\n")
             break;
 
         elif input_string[5:8] == b'get':
             file_name = input_string[9:]
             clientSideSockPort = int(input_string[0:5])
-            print("Trying to connect to the client socket ", clientSideSockIP, " on port: ", clientSideSockPort, "\n")
+            print("Waiting for client input ...")
             serverDataSock.connect((clientSideSockIP, clientSideSockPort))      # connect to the client
 
             try:
@@ -103,7 +103,7 @@ while True:
         elif input_string[5:8] == b'put':
             file_name = input_string[9:]
             clientSideSockPort = int(input_string[0:5])
-            print("Trying to connect to the client socket ", clientSideSockIP, " on port: ", clientSideSockPort, "\n")
+            print("Waiting for client input ...")
             serverDataSock.connect((clientSideSockIP, clientSideSockPort))          # connect to the client
             controlMessage = clientControlSock.recv(14)                             # check whether file is present or not
             input_string = controlMessage.strip()
@@ -114,7 +114,7 @@ while True:
 
             bytesReceived = 0
             while True:
-                
+
                 chunkData = ""                                      # The buffer to all data received from the the client.
                 chunkSizeBuff = ""                                  # The buffer containing the chunk size
                 chunkSizeBuff = recvAll(serverDataSock, 10)         # Receive the first 10 bytes indicating the size of the chunk
@@ -137,7 +137,7 @@ while True:
 
                 if chunkSize < 65536:                               # check if it is last chunk
                     break;
-                
+
             serverDataSock.close()
             sendAll(clientControlSock,str(bytesReceived).encode())
             controlMessage = clientControlSock.recv(10)
@@ -151,7 +151,7 @@ while True:
 
         elif input_string[5:7] == b'ls':
             clientSideSockPort = int(input_string[0:5])
-            print("Trying to connect to the client socket ", clientSideSockIP, " on port: ", clientSideSockPort, "\n")
+            print("Waiting for client input ...")
             serverDataSock.connect((clientSideSockIP, clientSideSockPort))  # connect to the client
             fileData = subprocess.check_output(["ls -l"], shell=True)
             dataSize = len(fileData)
