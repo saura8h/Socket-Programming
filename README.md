@@ -28,14 +28,24 @@ Evaluating prelimaries for socket programming.
 
     `source proj/bin/activate`  
 
-# Execution
+# Testing Functionality
 
 + Open two terminals and navigate to project root in both
 
 + Start server in one terminal
 
-    `python sendfile/serv.py`
+    `python server.py <PORT_NUMBER>`
 
-+ Send file from client to server in the other terminal
++ Start client in the other terminal
 
-    `python sendfile/cli.py sendfile/file.txt`
+    `python client.py <MACHINE_NAME> <PORT_NUMBER>`
+
++ In the client terminal **(indicated by `ftp> `)**:
+
+    `ls`
+
+    `get file.txt`
+
+    `put file.txt`
+
+    `quit`
