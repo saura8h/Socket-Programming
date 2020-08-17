@@ -1,6 +1,6 @@
 # Socket Programming
 
-Evaluating prelimaries for socket programming.
+Evaluating preliminaries for socket programming.
 
 # Setup
 
@@ -26,7 +26,7 @@ Evaluating prelimaries for socket programming.
 
 + Activate virtual environment
 
-    `source proj/bin/activate`  
+    `source proj/bin/activate`
 
 # Testing Functionality
 
